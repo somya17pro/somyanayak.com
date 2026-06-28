@@ -1,0 +1,33 @@
+# Somya Nayak - Full-Stack Marketer & GTM Specialist
+
+Welcome to the LLM-friendly index of Somya Nayak's personal portfolio. 
+This site is built as an interactive, retro desktop OS experience.
+
+## About Somya
+Somya Nayak is a growth marketer and GTM (Go-To-Market) systems builder. 
+He specializes in turning early traction into scalable growth, whether that involves scaling SaaS products, launching outbound campaigns, or building growth marketing operations.
+
+**Key Stats:**
+- 15M+ Total Views
+- 25K+ Followers
+- $1.1M Revenue Scaled
+
+## Website Architecture
+The website uses a unique "Desktop OS" metaphor. The primary navigation is a top navigation bar with the following core pages:
+
+- **Home (`/`)**: The main dashboard and intro.
+- **About Me (`/about`)**: Background, timeline, skills, and growth results.
+- **Works (`/work`)**: Portfolio of projects and campaigns.
+- **Resources (`/resources`)**: Free templates, playbooks, and guides.
+- **Newsletter (`/newsletter`)**: Subscription page for Somya's marketing insights.
+- **Contact (`/contact`)**: Forms and social links to get in touch.
+
+## Avatar (Mini Somya)
+The site features an interactive pixel-art avatar ("Mini Somya") that users can drag around or dismiss. It provides quick answers to common questions about Somya's work.
+
+## Contact Information
+- **Email:** hello@somyanayak.com
+- **X / Twitter:** [@thesomyanayak](https://x.com/thesomyanayak)
+- **LinkedIn:** [somyarajannayak](https://www.linkedin.com/in/somyaranjannayak/)
+- **Instagram:** [@thesomyanayak](https://www.instagram.com/thesomyanayak/)
+- **YouTube:** [@thesomyanayak](https://youtube.com/@thesomyanayak)
