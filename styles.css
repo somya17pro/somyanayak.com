@@ -997,8 +997,8 @@ button {
 
 .social-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(86px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
   margin: 18px 0;
 }
 
@@ -1809,7 +1809,7 @@ button {
   }
 
   .social-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .results-grid {

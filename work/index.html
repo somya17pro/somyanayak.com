@@ -63,6 +63,36 @@
     </section>
 
     <section class="windows" id="windows" aria-live="polite">
+
+      <article class="window chat-window" id="chat" style="left: 54vw; top: 14vh;" aria-label="Chat with Mini Somya">
+        <div class="window-titlebar">
+          <div class="traffic"><button data-close></button><button></button><button></button></div>
+          <span>Chat with Mini Somya</span>
+        </div>
+        <div class="window-body chat-body">
+          <div class="chat-log" id="chatLog" aria-live="polite">
+            <div class="chat-message bot">
+              <span class="mini-avatar" aria-hidden="true"></span>
+              <p>Hey, I'm Mini Somya. Ask me anything about Somya.</p>
+            </div>
+          </div>
+          <form class="chat-form" id="chatForm">
+            <label class="sr-only" for="chatInput">Ask Mini Somya a question</label>
+            <input id="chatInput" name="question" type="text" autocomplete="off" placeholder="Ask about experience, skills, contact..." required>
+            <button type="submit">Ask</button>
+          </form>
+          <div class="quick-asks" aria-label="Suggested questions">
+            <button type="button" data-question="Can you summarize your marketing experience?">Experience</button>
+            <button type="button" data-question="What did you do at Intempt?">Intempt</button>
+            <button type="button" data-question="How did you scale Marvedge to $1k MRR?">Marvedge</button>
+            <button type="button" data-question="What were your biggest achievements at Interactly?">Interactly</button>
+            <button type="button" data-question="Do you have experience with B2B outbound?">Outbound</button>
+            <button type="button" data-question="What are your core marketing skills?">Skills</button>
+            <button type="button" data-question="How can I contact Somya?">Contact</button>
+          </div>
+        </div>
+      </article>
+
       
       <article class="window open" id="experience" style="left: 10vw; top: 16vh;" aria-label="Experience log">
         <div class="window-titlebar">
@@ -99,10 +129,14 @@
 
     </section>
 
-    <div class="pixel-girl" id="pixelSomya" aria-hidden="true">
+    <section class="pixel-girl pixel-somya" id="pixelSomya" aria-label="Pixel art character of Somya" role="button" tabindex="0">
       <button id="dismissAvatar" aria-label="Dismiss avatar" class="avatar-dismiss">×</button>
       <div class="speech-bubble" id="speechBubble">Hey, I'm Mini Somya. Click me to chat.</div>
-    </div>
+      <div class="hair"></div>
+      <div class="face"></div>
+      <div class="body"></div>
+      <div class="legs"></div>
+    </section>
   </main>
 
   <script src="/script.js?v=453"></script>

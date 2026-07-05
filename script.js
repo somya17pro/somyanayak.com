@@ -27,7 +27,7 @@ const knowledgeBase = [
   {
     topic: "About Somya",
     keywords: ["name", "who is", "intro", "summary", "profile", "bio", "background", "what do you do", "who are you", "who is somya", "summarize", "marketing experience"],
-    answer: "I'm Somya Nayak, a full-stack marketer with 5+ years of experience. I've scaled a SaaS startup's revenue by 5x in 2 months, built and led GTM operations from scratch, and grew my agency to $1K/month. I connect strategy, product, and execution to drive scalable growth."
+    answer: "I'm Somya Nayak, a full-stack marketer with 6+ years of experience. I've scaled a SaaS startup's revenue by 5x in 2 months, built and led GTM operations from scratch, and grew my agency to $1K/month. I connect strategy, product, and execution to drive scalable growth."
   },
   {
     topic: "Current Role",
@@ -296,6 +296,7 @@ function placeAvatar(left, top) {
 }
 
 pixelSomya.addEventListener("pointerdown", (event) => {
+  if (event.target.closest("button")) return;
   avatarDrag.active = true;
   avatarDrag.moved = false;
   avatarDrag.pointerId = event.pointerId;
