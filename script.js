@@ -26,38 +26,38 @@ let avatarDrag = {
 const knowledgeBase = [
   {
     topic: "About Somya",
-    keywords: ["name", "who is", "intro", "summary", "profile", "bio", "background", "what do you do", "who are you", "who is somya"],
-    answer: "I'm Somya Nayak, a full-stack marketer with 6+ years in marketing, hands-on experience scaling two SaaS products as a founding marketer, and a focus on GTM operations, product marketing, and growth systems."
+    keywords: ["name", "who is", "intro", "summary", "profile", "bio", "background", "what do you do", "who are you", "who is somya", "summarize", "marketing experience"],
+    answer: "I'm Somya Nayak, a full-stack marketer with 5+ years of experience. I've scaled a SaaS startup's revenue by 5x in 2 months, built and led GTM operations from scratch, and grew my agency to $1K/month. I connect strategy, product, and execution to drive scalable growth."
   },
   {
     topic: "Current Role",
-    keywords: ["current", "present", "intempt", "product marketing", "job", "role", "working now", "work now", "works now", "current company", "latest role", "founding marketer", "where does somya work", "where does he work", "where is he working"],
-    answer: "Somya is currently a Product Marketing Manager at Intempt, starting Sep 2024. He joined as a founding marketer, worked directly with the founder, set up GTM ops from scratch, built a high-performing team of 4, and led growth strategy across channels."
+    keywords: ["current", "present", "intempt", "product marketing", "job", "role", "working now", "work now", "works now", "current company", "latest role", "founding marketer", "where does somya work", "what did you do at intempt"],
+    answer: "I am currently a Product Marketing Manager at Intempt (Sep 2024 - Present). As a founding marketer, I worked directly with the founder to set up all GTM ops from scratch, built a high-performing team of 4, and led strategy and execution across channels."
   },
   {
     topic: "Experience",
     keywords: ["experience", "work", "career", "timeline", "companies", "past roles", "previous jobs", "work history", "professional journey", "employment"],
-    answer: "Somya's experience includes Product Marketing Manager at Intempt, Founder & CEO at Marvedge, B2B Marketing Manager at Interactly, B2B ABM Intern at HighRadius, and Chief Marketing Officer at Svapak."
+    answer: "My experience includes Product Marketing Manager at Intempt, Founder & CEO at Marvedge, B2B Marketing Manager at Interactly, B2B ABM Intern at HighRadius, and Chief Marketing Officer at Svapak."
   },
   {
     topic: "Marvedge",
-    keywords: ["marvedge", "agency", "founder", "ceo", "mrr", "startup", "zero to", "$1k", "1k", "team of 8", "sdr", "data analysts", "editors", "designers"],
-    answer: "At Marvedge, Somya started from scratch and scaled the agency to $1K MRR. He managed a team of 8 across SDRs, data analysts, editors, and designers."
+    keywords: ["marvedge", "agency", "founder", "ceo", "mrr", "startup", "zero to", "$1k", "1k", "team of 8", "sdr", "data analysts", "editors", "designers", "scale marvedge", "$1k mrr"],
+    answer: "At Marvedge (Dec 2023 - Sep 2024), I started from scratch and scaled the agency to $1K MRR. I managed a high-performing team of 8, which included SDRs, data analysts, editors, and designers."
   },
   {
     topic: "Interactly",
-    keywords: ["interactly", "5x", "revenue", "b2b marketing manager", "five x", "growth in 2 months", "founder led", "led marketing"],
-    answer: "At Interactly, Somya worked directly with the founder and led marketing. His profile highlights a 5x revenue lift in 2 months."
+    keywords: ["interactly", "5x", "revenue", "b2b marketing manager", "five x", "growth in 2 months", "founder led", "led marketing", "achievements", "biggest achievements"],
+    answer: "At Interactly (June 2023 - Mar 2024), I worked directly with the founder as the B2B Marketing Manager and successfully led marketing initiatives that grew their revenue by 5x in just 2 months."
   },
   {
     topic: "HighRadius",
-    keywords: ["highradius", "abm", "outbound", "crm", "cold calling", "linkedin outreach", "email", "email marketing", "client meetings", "mid market", "b2b leads"],
-    answer: "At HighRadius, Somya worked as a B2B ABM Intern for mid-market accounts. He handled cold calling, LinkedIn outreach, email marketing, B2B outbound leads, CRM, and client meetings."
+    keywords: ["highradius", "abm", "outbound", "crm", "cold calling", "linkedin outreach", "email", "email marketing", "client meetings", "mid market", "b2b leads", "b2b outbound"],
+    answer: "At HighRadius (Feb 2022 - May 2023), I was a B2B ABM Intern for the Mid Market. I handled cold calling, LinkedIn outreach, email marketing, B2B outbound leads, CRM management, and client meetings."
   },
   {
     topic: "Svapak",
     keywords: ["svapak", "cmo", "doctors", "social media", "local doctors", "10 doctors", "10+", "team of 4", "chief marketing officer"],
-    answer: "At Svapak, Somya was Chief Marketing Officer from Feb 2020 to Dec 2023. He signed 10+ local doctors for social media marketing services and handled a marketing team of 4."
+    answer: "At Svapak (Feb 2020 - Dec 2023), I served as Chief Marketing Officer. I signed 10+ local doctors for social media marketing services and managed a marketing team of 4 to handle all operations."
   },
   {
     topic: "Skills",
