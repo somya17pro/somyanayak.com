@@ -186,6 +186,7 @@ function playTone(type = "open") {
 
 function bringForward(win) {
   topZ += 1;
+  if (topZ >= 8998) topZ = 40;
   win.style.zIndex = topZ;
 }
 
