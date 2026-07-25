@@ -218,29 +218,56 @@ function makeDraggable(win) {
   let startTop = 0;
   let dragging = false;
 
-  titlebar.addEventListener("pointerdown", (event) => {
-    if (event.target.closest("button")) return;
-    dragging = true;
-    bringForward(win);
-    startX = event.clientX;
-    startY = event.clientY;
-    startLeft = win.offsetLeft;
-    startTop = win.offsetTop;
-    titlebar.setPointerCapture(event.pointerId);
-  });
+  if (titlebar) {
+    titlebar.addEventListener("pointerdown", (event) => {
+      if (event.target.closest("button") || event.target.closest("a")) return;
+      
+      const computed = window.getComputedStyle(win);
+      if (computed.transform !== 'none' && computed.transform !== '') {
+        const rect = win.getBoundingClientRect();
+        win.style.transform = 'none';
+        win.style.left = `${rect.left}px`;
+        win.style.top = `${rect.top}px`;
+      }
 
-  titlebar.addEventListener("pointermove", (event) => {
-    if (!dragging) return;
-    const nextLeft = startLeft + event.clientX - startX;
-    const nextTop = startTop + event.clientY - startY;
-    win.style.left = `${clamp(nextLeft, 8, window.innerWidth - win.offsetWidth - 8)}px`;
-    win.style.top = `${clamp(nextTop, 44, window.innerHeight - win.offsetHeight - 90)}px`;
-  });
+      dragging = true;
+      bringForward(win);
+      startX = event.clientX;
+      startY = event.clientY;
+      startLeft = win.offsetLeft;
+      startTop = win.offsetTop;
+      try {
+        titlebar.setPointerCapture(event.pointerId);
+      } catch (e) {}
+    });
 
-  titlebar.addEventListener("pointerup", (event) => {
-    dragging = false;
-    titlebar.releasePointerCapture(event.pointerId);
-  });
+    titlebar.addEventListener("pointermove", (event) => {
+      if (!dragging) return;
+      const deltaX = event.clientX - startX;
+      const deltaY = event.clientY - startY;
+      const maxLeft = Math.max(0, window.innerWidth - win.offsetWidth);
+      const maxTop = Math.max(0, window.innerHeight - win.offsetHeight);
+      
+      const clampLeft = clamp(startLeft + deltaX, 0, maxLeft);
+      const clampTop = clamp(startTop + deltaY, 0, maxTop);
+
+      if (window.innerWidth <= 768) {
+        win.style.setProperty('left', `${clampLeft}px`, 'important');
+        win.style.setProperty('top', `${clampTop}px`, 'important');
+      } else {
+        win.style.left = `${clampLeft}px`;
+        win.style.top = `${clampTop}px`;
+      }
+    });
+
+    titlebar.addEventListener("pointerup", (event) => {
+      if (!dragging) return;
+      dragging = false;
+      try {
+        titlebar.releasePointerCapture(event.pointerId);
+      } catch (e) {}
+    });
+  }
 
   win.addEventListener("pointerdown", () => bringForward(win));
 }
@@ -452,4 +479,217 @@ if (dismissAvatarBtn && pixelSomya) {
     e.stopPropagation(); // prevent dragging/clicking on the avatar body
     pixelSomya.style.display = 'none';
   });
+}
+
+// --- Mobile 3-Bar Hamburger Menu Logic ---
+const mobileNavToggle = document.getElementById('mobileNavToggle');
+const mobileNavMenu = document.getElementById('mobileNavMenu');
+
+if (mobileNavToggle && mobileNavMenu) {
+  mobileNavToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = mobileNavMenu.classList.contains('open');
+    if (isOpen) {
+      mobileNavMenu.classList.remove('open');
+      mobileNavToggle.classList.remove('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    } else {
+      mobileNavMenu.classList.add('open');
+      mobileNavToggle.classList.add('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!mobileNavMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+      mobileNavMenu.classList.remove('open');
+      mobileNavToggle.classList.remove('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  const mobileNavItems = mobileNavMenu.querySelectorAll('.mobile-nav-item');
+  mobileNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileNavMenu.classList.remove('open');
+      mobileNavToggle.classList.remove('open');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// --- Resources Hub Multi-Level Filter & Sort Logic ---
+const resourceList = document.getElementById('resourceList');
+const resourceSearch = document.getElementById('resourceSearch');
+const resourceCount = document.getElementById('resourceCount');
+const sortSelect = document.getElementById('sortSelect');
+const toolBtns = document.querySelectorAll('.tool-btn');
+const typeBtns = document.querySelectorAll('.type-btn');
+
+const leadMagnets = [
+  {
+    id: "chatgpt-life-ruining-prompts",
+    title: "ChatGPT reveals what’s RUINING your life 😳",
+    description: "A psychologically brutal exercise to identify your limiting beliefs, analyze your patterns, and predict your future. Not for the faint of heart.",
+    tool: "chatgpt",          // 'chatgpt', 'claude', 'gemini', 'multi-tool'
+    type: "prompts",          // 'prompts', 'guides', 'workflows', 'systems', 'tools'
+    date: "2026-07-25",
+    popularity: 200,
+    link: "/resources/chatgpt-life-ruining-prompts/"
+  },
+  {
+    id: "chatgpt-secret-codes",
+    title: "ChatGPT Secret Codes: 100 Prompt Shortcuts ⚡",
+    description: "100 powerful slash commands and shortcut codes organized by category — writing, learning, brainstorming, analysis, coding, and more.",
+    tool: "chatgpt",
+    type: "prompts",
+    date: "2026-07-25",
+    popularity: 190,
+    link: "/resources/chatgpt-secret-codes/"
+  },
+  {
+    id: "claude-secret-codes",
+    title: "Claude Secret Codes: 100 Prompt Shortcuts ⚡",
+    description: "100 advanced slash commands and shortcut codes for Claude AI — writing, artifacts, reasoning, learning, analysis, creative, and coding.",
+    tool: "claude",
+    type: "prompts",
+    date: "2026-07-25",
+    popularity: 185,
+    link: "/resources/claude-secret-codes/"
+  },
+  {
+    id: "chatgpt-discount-codes",
+    title: "ChatGPT Can Find You Discount Codes For Anything You're About To Buy 💸",
+    description: "Two prompts that hunt down active promo codes, test them at checkout automatically, and maximize your savings before you hit buy.",
+    tool: "chatgpt",
+    type: "prompts",
+    date: "2026-07-22",
+    popularity: 175,
+    link: "/resources/chatgpt-discount-codes/"
+  },
+  {
+    id: "claude-digital-identity-takedown",
+    title: "Claude: Removing Your Digital Identity 🛡️",
+    description: "Locate exposed personal data across people-search sites and generate custom data deletion & DMCA takedown requests in one afternoon.",
+    tool: "claude",
+    type: "guides",
+    date: "2026-07-17",
+    popularity: 165,
+    link: "/resources/claude-digital-identity-takedown/"
+  },
+  {
+    id: "turn-claude-into-marketing-agency",
+    title: "Turn Claude Into a Million Dollar Marketing Agency 🚀",
+    description: "46 modular marketing skills & battle-tested frameworks to equip Claude for copywriting, paid ads, SEO audits, email flows, and CRO.",
+    tool: "claude",
+    type: "tools",
+    date: "2026-04-18",
+    popularity: 195,
+    link: "/resources/turn-claude-into-marketing-agency/"
+  }
+];
+
+let activeToolFilter = 'all';
+let activeTypeFilter = 'all';
+
+function renderResources(items) {
+  if (!resourceList) return;
+  resourceList.innerHTML = '';
+  
+  if (resourceCount) {
+    const count = items.length;
+    resourceCount.innerText = `Showing ${count} ${count === 1 ? 'resource' : 'resources'}`;
+  }
+
+  if (items.length === 0) {
+    resourceList.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--ink); opacity: 0.6; font-family: system-ui, sans-serif;">No resources found matching your active filters or search query.</div>';
+    return;
+  }
+
+  items.forEach(item => {
+    const a = document.createElement('a');
+    a.className = 'resource-row';
+    a.href = item.link;
+    
+    a.innerHTML = `
+      <span class="resource-badge">${item.type.toUpperCase()}</span>
+      <h3 class="resource-title">${item.title}</h3>
+      <p class="resource-summary">${item.description}</p>
+      <div class="resource-arrow">-&gt;</div>
+    `;
+    
+    resourceList.appendChild(a);
+  });
+}
+
+function filterAndSortResources() {
+  if (!resourceList) return;
+  const searchTerm = resourceSearch ? resourceSearch.value.toLowerCase().trim() : '';
+  const sortMode = sortSelect ? sortSelect.value : 'popular';
+
+  let filtered = leadMagnets.filter(item => {
+    const matchesTool = activeToolFilter === 'all' || item.tool === activeToolFilter;
+    const matchesType = activeTypeFilter === 'all' || item.type === activeTypeFilter;
+    const matchesSearch = !searchTerm || 
+      item.title.toLowerCase().includes(searchTerm) || 
+      item.description.toLowerCase().includes(searchTerm) ||
+      item.tool.toLowerCase().includes(searchTerm) ||
+      item.type.toLowerCase().includes(searchTerm);
+
+    return matchesTool && matchesType && matchesSearch;
+  });
+
+  // Sort logic
+  if (sortMode === 'popular') {
+    filtered.sort((a, b) => b.popularity - a.popularity);
+  } else if (sortMode === 'newest') {
+    filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+  } else if (sortMode === 'alphabetical') {
+    filtered.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  renderResources(filtered);
+}
+
+if (resourceList) {
+  if (resourceSearch) {
+    resourceSearch.addEventListener('input', filterAndSortResources);
+  }
+
+  if (sortSelect) {
+    sortSelect.addEventListener('change', filterAndSortResources);
+  }
+
+  if (toolBtns.length > 0) {
+    toolBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        toolBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        activeToolFilter = btn.dataset.tool;
+        filterAndSortResources();
+      });
+    });
+  }
+
+  if (typeBtns.length > 0) {
+    typeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        typeBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        activeTypeFilter = btn.dataset.type;
+        filterAndSortResources();
+      });
+    });
+  }
+
+  // Initial render
+  filterAndSortResources();
 }

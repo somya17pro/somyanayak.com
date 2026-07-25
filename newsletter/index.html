@@ -21,7 +21,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <link rel="stylesheet" href="/styles.css?v=462">
+  <link rel="stylesheet" href="/styles.css?v=1009">
 </head>
 <body>
   <main class="desktop" id="desktop">
@@ -35,28 +35,67 @@
     <div class="bird bird-5" aria-hidden="true"></div>
     <div class="bird bird-6" aria-hidden="true"></div>
 
+        <!-- Mobile Hamburger 3-Bar Navigation System -->
+    <div class="mobile-nav-bar" id="mobileNavBar">
+      <div class="mobile-brand">
+        <span class="pixel-icon icon-dashboard" aria-hidden="true"></span>
+        <span>SOMYA NAYAK</span>
+      </div>
+      <button class="mobile-hamburger-btn" id="mobileNavToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav-dropdown" id="mobileNavMenu" aria-label="Mobile Navigation Drawer">
+      <a class="mobile-nav-item" href="/">
+        <span class="pixel-icon icon-dashboard" aria-hidden="true"></span>
+        <span>Home</span>
+      </a>
+      <a class="mobile-nav-item" href="/about/">
+        <span class="pixel-icon icon-profile" aria-hidden="true"></span>
+        <span>About Me</span>
+      </a>
+      <a class="mobile-nav-item" href="/work/">
+        <span class="pixel-icon icon-megaphone" aria-hidden="true"></span>
+        <span>Works</span>
+      </a>
+      <a class="mobile-nav-item" href="/resources/">
+        <span class="pixel-icon icon-seo" aria-hidden="true"></span>
+        <span>Resources</span>
+      </a>
+      <a class="mobile-nav-item" href="/newsletter/">
+        <span class="pixel-icon icon-contact" aria-hidden="true"></span>
+        <span>Newsletter</span>
+      </a>
+      <a class="mobile-nav-item" href="/contact/">
+        <span class="pixel-icon icon-socials" aria-hidden="true"></span>
+        <span>Contact</span>
+      </a>
+    </nav>
     <section class="desktop-icons" aria-label="Project icons">
       <a class="desktop-icon" href="/">
         <span class="pixel-icon icon-dashboard" aria-hidden="true"></span>
         <span>Home</span>
       </a>
-      <a class="desktop-icon" href="/about">
+      <a class="desktop-icon" href="/about/">
         <span class="pixel-icon icon-profile" aria-hidden="true"></span>
         <span>About Me</span>
       </a>
-      <a class="desktop-icon" href="/work">
+      <a class="desktop-icon" href="/work/">
         <span class="pixel-icon icon-megaphone" aria-hidden="true"></span>
         <span>Works</span>
       </a>
-      <a class="desktop-icon" href="/resources">
+      <a class="desktop-icon" href="/resources/">
         <span class="pixel-icon icon-seo" aria-hidden="true"></span>
         <span>Resources</span>
       </a>
-      <a class="desktop-icon" href="/newsletter">
+      <a class="desktop-icon" href="/newsletter/">
         <span class="pixel-icon icon-contact" aria-hidden="true"></span>
         <span>Newsletter</span>
       </a>
-      <a class="desktop-icon" href="/contact">
+      <a class="desktop-icon" href="/contact/">
         <span class="pixel-icon icon-socials" aria-hidden="true"></span>
         <span>Contact</span>
       </a>
@@ -66,7 +105,7 @@
 
       <article class="window chat-window" id="chat" style="left: 54vw; top: 14vh;" aria-label="Chat with Mini Somya">
         <div class="window-titlebar">
-          <div class="traffic"><button data-close></button><button></button><button></button></div>
+          <div class="traffic"><button data-close aria-label="Close window"></button><button aria-label="Minimize window"></button><button aria-label="Maximize window"></button></div>
           <span>Chat with Mini Somya</span>
         </div>
         <div class="window-body chat-body">
@@ -94,9 +133,9 @@
       </article>
 
       
-      <article class="window open" id="newsletter" style="left: 30vw; top: 25vh; min-width: 400px; text-align: center;" aria-label="Newsletter">
+      <article class="window open" id="newsletter" style="left: 30vw; top: 25vh; text-align: center;" aria-label="Newsletter">
         <div class="window-titlebar">
-          <div class="traffic"><a href="/"><button></button></a><button></button><button></button></div>
+          <div class="traffic"><a href="/" aria-label="Home"><button aria-label="Back to Home"></button></a><button aria-label="Minimize window"></button><button aria-label="Maximize window"></button></div>
           <span>Newsletter</span>
         </div>
         <div class="window-body" style="padding: 40px 20px;">
@@ -106,7 +145,7 @@
 
     </section>
 
-    <section class="pixel-girl pixel-somya" id="pixelSomya" aria-label="Pixel art character of Somya" role="button" tabindex="0">
+    <section class="pixel-girl pixel-somya" id="pixelSomya" style="display: none !important;" aria-label="Pixel art character of Somya" role="button" tabindex="0">
       <button id="dismissAvatar" aria-label="Dismiss avatar" class="avatar-dismiss">×</button>
       <div class="speech-bubble" id="speechBubble">Hey, I'm Mini Somya. Click me to chat.</div>
       <div class="hair"></div>
@@ -116,6 +155,6 @@
     </section>
   </main>
 
-  <script src="/script.js?v=453"></script>
+  <script src="/script.js?v=1001"></script>
 </body>
 </html>
